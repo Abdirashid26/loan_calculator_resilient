@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: loan_calculator
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/loan_calculator
+    username: postgres
+    password: faisal26
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 20
+      max-idle-time: 30m
+
+server:
+  port: 7123
+
+
+
+
+jwt:
+  secret: 9S7LYBue4yA1RpIah6x8rQYkeE1A9wL5YrkLEGybdAnzNTQ9tLlkU8XEvhz2kGOKXgU4n9ForQkLyucUAsEVGA==
+  expiration: 86400000
