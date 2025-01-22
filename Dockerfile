@@ -1,5 +1,5 @@
 # Use OpenJDK 21 as the base image for building
-FROM openjdk:21-jdk-slim as build
+FROM eclipse-temurin:21-jre-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -13,7 +13,7 @@ RUN ./mvnw clean install -DskipTests # For Maven
 # RUN ./gradlew build -x test # For Gradle (use this if you are using Gradle)
 
 # Use OpenJDK 21 as the base image for the runtime environment
-FROM openjdk:21-jre-slim
+FROM eclipse-temurin:21-jre-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
