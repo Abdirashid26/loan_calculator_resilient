@@ -1,0 +1,10 @@
+spring:
+  r2dbc:
+    url: ${SPRING_DATASOURCE_URL:r2dbc:postgresql://postgres:5432/loan_calculator_db}
+    username: postgres
+    password: faisal26
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 20
+      max-idle-time: 30m

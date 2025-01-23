@@ -1,14 +1,11 @@
-# Use an official Java runtime as a parent image
-FROM amazoncorretto:21.0.4-alpine3.18
-
-# Set the working directory in the container
+# Build Stage
+FROM maven:3.9.8-eclipse-temurin-21-alpine as builder
 WORKDIR /app
+COPY . .
+RUN mvn package -Dmaven.test.skip=true
 
-# Copy the JAR file into the container
-COPY target/loan_calculator-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose the port that the application will run on
-EXPOSE 7123
-
-# Run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Final Stage
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY  --from=builder /app/target/*.jar /app/app.jar
+ENTRYPOINT ["java","-jar","app.jar"]

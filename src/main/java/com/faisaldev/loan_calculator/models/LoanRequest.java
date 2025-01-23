@@ -2,9 +2,11 @@ package com.faisaldev.loan_calculator.models;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class LoanRequest {
     @NotNull(message = "Loan amount is required")
     @Min(value = 1, message = "Loan amount must be greater than 0")
